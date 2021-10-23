@@ -34,6 +34,16 @@ Example:
 alt.emitClient(player, 'notifications:create', 0, 5, 'My title', 'My super cool message');
 ```
 
+Notification types:
+
+| Type  | Number |
+| ------| ------ |
+| Information | 0 |
+| Announcement | 1 |
+| Success | 2 |
+| Warning | 3 |
+| Error | 4 |
+
 ## IMPORTANT: `duration` must be seconds not ms
 
 # I hope you enjoy my small script
