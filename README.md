@@ -4,7 +4,7 @@
 
 ## Features
 
-With this resource you can create notifications for the player.
+With this resource you can create notifications, like shown above.
 
 ## Install
 
