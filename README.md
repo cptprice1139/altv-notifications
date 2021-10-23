@@ -12,7 +12,7 @@ To install this script, just download the latest release or download the reposit
 
 ## Usage
 
-You can either create them clientside with [a link(https://github.com/elsucco/altvnotifications/blob/28b4d64664b879e67fe44c377b2259455a40ce13/src/client/index.ts#L9)CreateNotification:
+You can either create them clientside with [CreateNotification](https://github.com/elsucco/altvnotifications/blob/28b4d64664b879e67fe44c377b2259455a40ce13/src/client/index.ts#L9):
 
 ```
 export function CreateNotification(type: number, duration: number, title: string, message: string) {
@@ -20,7 +20,7 @@ export function CreateNotification(type: number, duration: number, title: string
 }
 ```
 
-Or you can just emit from server a link](https://github.com/elsucco/altv-notifications/blob/28b4d64664b879e67fe44c377b2259455a40ce13/src/client/index.ts#L5)here:
+Or you can just emit from server [here](https://github.com/elsucco/altv-notifications/blob/28b4d64664b879e67fe44c377b2259455a40ce13/src/client/index.ts#L5):
 
 ```
 alt.onServer('notifications:create', (type: number, duration: number, title: string, message: string) => {
