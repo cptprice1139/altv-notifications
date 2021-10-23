@@ -28,6 +28,8 @@ alt.onServer('notifications:create', (type: number, duration: number, title: str
 })
 ```
 
+Example:
+
 ```
 alt.emitClient(player, 'notifications:create', 0, 5, 'My title', 'My super cool message');
 ```
