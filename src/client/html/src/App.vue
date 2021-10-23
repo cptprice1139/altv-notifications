@@ -19,7 +19,7 @@ export default {
   },
   created () {
     if ('alt' in window) {
-      alt.on('notifications:create', (data) => {this.createNotification(data); console.log('emit success')})
+      alt.on('notifications:create', (data) => his.createNotification(data));
     }
   },
   methods: {
