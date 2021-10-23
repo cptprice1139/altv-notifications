@@ -17,9 +17,9 @@ export default {
       notifications: []
     }
   },
-  mounted () {
+  created () {
     if ('alt' in window) {
-      alt.on('notifications:create', (data) => this.createNotification(data))
+      alt.on('notifications:create', (data) => {this.createNotification(data); console.log('emit success')})
     }
   },
   methods: {
