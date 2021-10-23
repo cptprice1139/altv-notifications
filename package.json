@@ -20,6 +20,11 @@
     "@altv/types-client": "^1.8.8",
     "@altv/types-natives": "^1.4.2",
     "@altv/types-shared": "^1.0.7",
-    "@altv/types-webview": "^1.0.2"
+    "@altv/types-webview": "^1.0.2",
+    "@fortawesome/fontawesome-common-types": "^0.2.36"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4"
   }
 }

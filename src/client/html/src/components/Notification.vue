@@ -2,22 +2,19 @@
   <transition name="notification-slide" @after-enter="afterEnter" @after-leave="afterLeave" appear>
     <div v-if="visible" class="notification">
       <div class="notification-icon">
-        <i :style="{backgroundImage: $props.icon}"></i>
+        <font-awesome-icon :style="{color: getIconColor()}" :icon="getIcon()" class="icon" />
       </div>
 
       <div class="notification-body">
-        <span class="body-title">{{$props.title}}</span>
+        <span class="body-title">{{$props.title}}</span><br>
         <span class="body-message">{{$props.message}}</span>
-      </div>
-
-      <div class="notification-progress">
-        <div class="progress-thumb" :style=" { width: (100 - (elapsed / $props.duration * 100)) + '%' }"></div>
       </div>
     </div>
   </transition>
 </template>
 
 <script>
+import { icons, iconColors } from '../utils/icons'
 
 export default {
   name: 'Notification',
@@ -41,80 +38,108 @@ export default {
     message: {
       type: String,
       default: ''
-    },
-    icon: {
-      type: String,
-      default: '../assets/images/normal.png'
     }
   },
-  data() {
+  data () {
     return {
       visible: false,
       elapsed: 0
     }
   },
-  mounted() {
-    this.visible = true;
+  mounted () {
+    this.visible = true
   },
   methods: {
-    afterEnter() {
-      const elapsed = setInterval(() => {
-        if (this.elapsed >= this.$props.duration) {
-          clearInterval(elapsed);
-          return;
-        }
-
-        this.elapsed += 4.1;
-      }, 1)
-
+    afterEnter () {
       setTimeout(() => {
-        this.hide();
+        this.hide()
       }, this.$props.duration)
     },
-    afterLeave() {
-      this.$el.remove();
+    afterLeave () {
+      this.$el.remove()
     },
-    hide() {
-      this.visible = false;
+    hide () {
+      this.visible = false
+    },
+    getIcon () {
+      return icons[this.type]
+    },
+    getIconColor () {
+      return iconColors[this.type]
     }
   }
-};
+}
 </script>
 
 <style scoped>
 
-@keyframes notification-slide-out {
-  0% {
-    transform: translateX(0%)
-  }
-
-  50% {
-    transform: translateX(-10%)
-  }
-  100% {
-    transform: translateX(110%)
-  }
+.notification-slide-enter-from,
+.notification-slide-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
 }
 
-.notification-slide-leave-active,
-.notification-slide-enter-active {
-  transition: .4s ease
+.notification-slide-enter-to,
+.notification-slide-leave-from {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.notification-slide-enter {
-  transform: translateX(110%);
-}
-
+.notification-slide-enter-active,
 .notification-slide-leave-active {
-  animation: notification-slide-out .5s
+  transition: all .4s ease;
 }
 
 .notification {
   display: flex;
   flex-direction: column;
-  width: 12.5vw;
-  min-height: 3.5vh;
-  background: aqua;
+  width: 18.5vw;
+  min-height: 4vw;
+  background: #15171a;
+  border-radius: 18px;
+  margin-top: 0.5vw;
 }
 
+.notification-icon {
+  position: absolute;
+  width: 2.2vw;
+  height: 2.2vw;
+  background: #36393e;
+  margin-left: 0.75vw;
+  margin-top: 0.9vw;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(55, 55, 60, 0.25);
+}
+
+.icon {
+  position: absolute;
+  width: 1.25vw;
+  height: 1.25vw;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.5vw;
+}
+
+.notification-body {
+  position: relative;
+  width: 76%;
+  min-height: 3vw;
+  border-radius: 0 18px 18px 0;
+  margin-left: 20%;
+  margin-top: 0.65vw;
+  margin-bottom: 0.5vw;
+  color: white;
+}
+
+.body-title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.body-message {
+  font-size: 15px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
 </style>

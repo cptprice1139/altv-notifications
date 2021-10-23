@@ -5,38 +5,50 @@
 </template>
 
 <script>
-import Notification from './components/Notification.vue';
+import Notification from './components/Notification.vue'
 
 export default {
   name: 'App',
   components: {
     Notification
   },
-  data() {
+  data () {
     return {
-      notifications: [{
-        id: 0,
-        type: 0,
-        duration: 5000,
-        title: 'fdsfsdf',
-        message: 'fdsfsd',
-        icon: ''
-      }]
+      notifications: []
+    }
+  },
+  mounted () {
+    if ('alt' in window) {
+      alt.on('notifications:create', (data) => this.createNotification(data))
     }
   },
   methods: {
+    createNotification (data) {
+      this.notifications.push({
+        id: data.id,
+        type: data.type,
+        duration: data.duration * 1000,
+        title: data.title,
+        message: data.message
+      })
+    }
   }
-};
+}
 </script>
 
 <style>
+@font-face {
+  font-family: Poppins;
+  src: url(./assets/fonts/poppins.ttf) format("truetype");
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Poppins, sans-serif;
 }
 
 .notification-container {
   position: fixed;
-  width: 25vw;
+  width: 20vw;
   max-height: 100%;
   right: 0;
   top: 0;
