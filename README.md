@@ -34,6 +34,7 @@ Example:
 alt.emitClient(player, 'notifications:create', 0, 5, 'My title', 'My super cool message');
 ```
 
+## IMPORTANT: `duration` must be seconds not ms
 
 # I hope you enjoy my small script
 
